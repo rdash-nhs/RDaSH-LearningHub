@@ -16,6 +16,35 @@ async function initVideoVaultPage() {
   });
 
   renderVideoVault(globalVideoVault);
+  handleVideoVaultDeepLink();
+}
+
+/**
+ * Read the ?video= query parameter, scroll to the matching
+ * accordion card and expand it.
+ */
+function handleVideoVaultDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const video = (params.get("video") || "").trim();
+  if (!video) return;
+
+  const target = utils.normalizeTitle(video);
+  const cards = document.querySelectorAll("#vvCourseList .prospectus-card");
+
+  for (const card of cards) {
+    if (card.dataset.courseTitle === target) {
+      const collapseEl = card.querySelector(".collapse");
+      if (collapseEl && !collapseEl.classList.contains("show")) {
+        bootstrap.Collapse.getOrCreateInstance(collapseEl).show();
+      }
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => {
+        card.style.boxShadow = "0 0 0 3px #c68a12";
+        setTimeout(() => (card.style.boxShadow = ""), 4000);
+      }, 300);
+      return;
+    }
+  }
 }
 
 function renderVideoVault(videoData) {
@@ -50,8 +79,9 @@ function renderVideoVault(videoData) {
     )
     .map((v, idx) => {
       const id = `vvCollapse_${idx}`;
+      const normName = utils.normalizeTitle(v.Course || v.Title);
       return `
-<div class="card mb-3 border shadow-sm prospectus-card" style="border-left: 5px solid #c68a12 !important; background-color: #fef9ef;">
+<div class="card mb-3 border shadow-sm prospectus-card" style="border-left: 5px solid #c68a12 !important; background-color: #fef9ef;" data-course-title="${normName}">
   <button class="btn w-100 text-start p-3 d-flex justify-content-between align-items-center border-0"
           style="background-color: #fef9ef;" data-bs-toggle="collapse" data-bs-target="#${id}">
       <div>

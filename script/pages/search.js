@@ -13,7 +13,10 @@ async function initSearchPage() {
 
   // Display the query in the search input
   const searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.value = query;
+  if (searchInput) {
+    searchInput.value = query;
+    searchInput.dispatchEvent(new Event("input"));
+  }
 
   if (!query) {
     document.getElementById("searchResults").innerHTML =
@@ -39,7 +42,7 @@ async function initSearchPage() {
     const title = utils.cleanTitle(d.Course || d.Title).toLowerCase();
     const desc = (d.Description || "").toLowerCase();
     if (title.includes(query) || desc.includes(query)) {
-      results.push({ type: "Video", title: utils.cleanTitle(d.Course || d.Title), description: d.Description, link: d.CourseLink || d.VideoLink || "#" });
+      results.push({ type: "Video", title: utils.cleanTitle(d.Course || d.Title), description: d.Description, link: `video-vault.html?video=${encodeURIComponent(d.Course || d.Title)}` });
     }
   });
 
@@ -48,7 +51,7 @@ async function initSearchPage() {
     const title = utils.cleanTitle(d.Course || d.Title).toLowerCase();
     const desc = (d.Description || "").toLowerCase();
     if (title.includes(query) || desc.includes(query)) {
-      results.push({ type: "QI Resource", title: utils.cleanTitle(d.Course || d.Title), description: d.Description, link: d.CourseLink || "#" });
+      results.push({ type: "QI Resource", title: utils.cleanTitle(d.Course || d.Title), description: d.Description, link: `quality-improvement.html?qi=${encodeURIComponent(d.Course || d.Title)}` });
     }
   });
 

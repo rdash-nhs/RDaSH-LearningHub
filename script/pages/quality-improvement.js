@@ -17,6 +17,35 @@ async function initQIPage() {
   });
 
   renderQI(globalQualityImprovement);
+  handleQIDeepLink();
+}
+
+/**
+ * Read the ?qi= query parameter, scroll to the matching
+ * accordion card and expand it.
+ */
+function handleQIDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const qi = (params.get("qi") || "").trim();
+  if (!qi) return;
+
+  const target = utils.normalizeTitle(qi);
+  const cards = document.querySelectorAll("#qiContentList .prospectus-card");
+
+  for (const card of cards) {
+    if (card.dataset.courseTitle === target) {
+      const collapseEl = card.querySelector(".collapse");
+      if (collapseEl && !collapseEl.classList.contains("show")) {
+        bootstrap.Collapse.getOrCreateInstance(collapseEl).show();
+      }
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => {
+        card.style.boxShadow = "0 0 0 3px #6f42c1";
+        setTimeout(() => (card.style.boxShadow = ""), 4000);
+      }, 300);
+      return;
+    }
+  }
 }
 
 function renderQI(qiData) {
@@ -50,6 +79,7 @@ function renderQI(qiData) {
     .map((item, idx) => {
       const id = `qiCollapse_${idx}`;
       const cleanName = utils.cleanTitle(item.Course || item.Title);
+      const normName = utils.normalizeTitle(item.Course || item.Title);
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -66,7 +96,7 @@ function renderQI(qiData) {
         item.CourseLink !== "awaiting link";
 
       return `
-<div class="card mb-3 border shadow-sm prospectus-card" style="border-left: 5px solid #6f42c1 !important; background-color: #f9f6ff;">
+<div class="card mb-3 border shadow-sm prospectus-card" style="border-left: 5px solid #6f42c1 !important; background-color: #f9f6ff;" data-course-title="${normName}">
   <button class="btn w-100 text-start p-3 d-flex justify-content-between align-items-center border-0"
           style="background-color: #f9f6ff;" data-bs-toggle="collapse" data-bs-target="#${id}">
       <div>

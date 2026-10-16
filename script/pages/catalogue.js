@@ -20,6 +20,33 @@ async function initCataloguePage() {
   renderCatalogue(globalRawClasses, globalRawDescs);
   initCalendar();
   setupAlphabetNav();
+  handleDeepLink();
+}
+
+/**
+ * Read the ?course= query parameter, scroll to the matching
+ * accordion card and expand it.
+ */
+function handleDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const course = (params.get("course") || "").trim();
+  if (!course) return;
+
+  const target = utils.normalizeTitle(course);
+  const cards = document.querySelectorAll("#courseList .prospectus-card");
+
+  for (const card of cards) {
+    if (card.dataset.courseTitle === target) {
+      const collapseEl = card.querySelector(".collapse");
+      if (collapseEl && !collapseEl.classList.contains("show")) {
+        bootstrap.Collapse.getOrCreateInstance(collapseEl).show();
+      }
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      card.classList.add("border-primary", "border-2");
+      setTimeout(() => card.classList.remove("border-primary", "border-2"), 4000);
+      return;
+    }
+  }
 }
 
 /**
@@ -70,13 +97,14 @@ function renderCatalogue(classList, courseDescs) {
       const id = `courseCollapse_${idx}`;
       const sessionCount = group.sessions.length;
       const cleanCourseName = utils.cleanTitle(group.info.Course);
+      const normName = utils.normalizeTitle(group.info.Course);
 
       const hasLink =
         group.info.CourseLink &&
         group.info.CourseLink !== "#" &&
         group.info.CourseLink !== "awaiting link";
 
-      return `<div class="card mb-3 border border-info-subtle bg-info-subtle shadow-sm prospectus-card">
+      return `<div class="card mb-3 border border-info-subtle bg-info-subtle shadow-sm prospectus-card" data-course-title="${normName}">
     <button class="btn w-100 text-start p-3 d-flex justify-content-between align-items-center bg-info-subtle text-info-emphasis border-0" data-bs-toggle="collapse" data-bs-target="#${id}">
         <div>
             <span class="fw-bold d-block">${cleanCourseName}</span>

@@ -28,15 +28,20 @@ function clearSearch() {
 }
 
 /**
- * Show/hide the clear button based on input content.
+ * Show/hide the clear button based on focus and input content:
+ * hidden while the input is focused, shown when blurred with text present.
  */
 function initSearchClearButton() {
   const input = document.getElementById("searchInput");
   const clearBtn = document.getElementById("searchClearBtn");
   if (!input || !clearBtn) return;
-  input.addEventListener("input", () => {
+
+  const update = () => {
     clearBtn.style.display = input.value.trim() !== "" ? "flex" : "none";
-  });
+  };
+
+  update();
+  input.addEventListener("input", update);
 }
 
 /**
