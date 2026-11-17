@@ -3,7 +3,8 @@
  * Call injectHeader('home') on each page, passing the active nav item key.
  *
  * Nav keys: home | educator | learner | feedback | catalogue | video-vault |
- *           qi | mast | rooms | faqs | volunteers
+ *           qi | mast | rooms | faqs | volunteers (parent, opens dropdown) |
+ *           volunteer-faqs | volunteer-feedback | volunteer-support
  */
 function injectHeader(activePage) {
   const navItems = [
@@ -17,15 +18,43 @@ function injectHeader(activePage) {
     { key: "mast",         label: "MAST",                 href: "mast.html" },
     { key: "rooms",        label: "Rooms",                href: "rooms.html" },
     { key: "faqs",         label: "FAQs",                 href: "faqs.html" },
-    { key: "volunteers",   label: "Volunteers",           href: "Volunteers.html" },
   ];
+
+  // Volunteer sub-pages shown as a hover dropdown on the Volunteers nav item.
+  const volunteerSubPages = [
+    { key: "volunteer-home",      label: "Home",     href: "volunteer-home.html" },
+    { key: "volunteer-faqs",      label: "FAQs",     href: "volunteer-faqs.html" },
+    { key: "volunteer-feedback",  label: "Feedback", href: "volunteer-feedback.html" },
+    { key: "volunteer-support",   label: "Support",  href: "volunteer-support.html" },
+  ];
+  const volunteerActive =
+    activePage === "volunteer-home" ||
+    activePage === "volunteers" ||
+    activePage === "volunteer-faqs" ||
+    activePage === "volunteer-feedback" ||
+    activePage === "volunteer-support";
+
+  const volunteerLinks = volunteerSubPages
+    .map(
+      (item) =>
+        `<a class="dropdown-item ${activePage === item.key ? "active" : ""}" href="${item.href}">${item.label}</a>`,
+    )
+    .join("\n              ");
+
+  const volunteerDropdown = `
+      <li class="nav-item dropdown nav-dropdown-hover">
+        <a class="nav-link dropdown-toggle ${volunteerActive ? "active" : ""}" href="volunteer-home.html" aria-haspopup="true" aria-expanded="false">Volunteers</a>
+        <ul class="dropdown-menu">
+              ${volunteerLinks}
+        </ul>
+      </li>`;
 
   const navLinks = navItems
     .map(
       (item) =>
         `<li class="nav-item"><a class="nav-link ${activePage === item.key ? "active" : ""}" href="${item.href}">${item.label}</a></li>`,
     )
-    .join("\n              ");
+    .join("\n              ") + "\n              " + volunteerDropdown;
 
   const headerHTML = `
   <header class="nhs-header">
@@ -101,6 +130,38 @@ function injectHeader(activePage) {
     });
   });
 
+  // Apply the same yellow "pressed" flash to dropdown items on click.
+  // Navigation is delayed briefly so the flash (yellow background + black
+  // border) is visible before the page unloads, matching the nav-link behaviour.
+  mount?.querySelectorAll(".nav-dropdown-hover .dropdown-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      item.classList.remove("nav-link-flash");
+      void item.offsetWidth;
+      item.classList.add("nav-link-flash");
+      const href = item.getAttribute("href");
+      window.setTimeout(() => {
+        if (href) window.location.href = href;
+      }, 150);
+    });
+  });
+
+  // Keep the Volunteers dropdown's aria-expanded in sync with its hover/focus
+  // state. The link navigates on click, so Bootstrap is not managing it.
+  const volunteerToggle = mount?.querySelector(".nav-dropdown-hover > .dropdown-toggle");
+  const volunteerItem = mount?.querySelector(".nav-dropdown-hover");
+  if (volunteerToggle && volunteerItem) {
+    const setExpanded = (open) =>
+      volunteerToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    volunteerItem.addEventListener("mouseenter", () => setExpanded(true));
+    volunteerItem.addEventListener("mouseleave", () => setExpanded(false));
+    volunteerToggle.addEventListener("focus", () => setExpanded(true));
+    volunteerToggle.addEventListener("blur", (e) => {
+      // Only collapse when focus leaves the dropdown entirely.
+      if (!volunteerItem.contains(e.relatedTarget)) setExpanded(false);
+    });
+  }
+
   // Wire up theme selector after injection
   initThemeSelector();
   initSearchClearButton();
@@ -111,25 +172,19 @@ function injectHeader(activePage) {
  */
 function injectFooter() {
   const footerHTML = `
-  <footer class="mt-auto py-5 border-top bg-light">
+  <footer class="site-footer mt-auto py-5">
     <div class="container text-center">
-      <div class="row mb-4">
-        <div class="col">
-          <img src="https://assets.codepen.io/8889025/RDaSH_LMRH4.png" class="footer-logo"
-            style="max-height: 100px; opacity: 1;">
-        </div>
-      </div>
       <div class="row mb-3">
         <div class="col">
-          <h6 class="text-uppercase fw-bold text-info mb-1" style="font-size: 0.75rem; letter-spacing: 2px;">
-            RDaSH Learning Matters
+          <h6 class="text-uppercase fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 2px;">
+            RDaSH Learning Hub
           </h6>
-          <p class="small text-muted mb-0">Learning Resource Hub &copy; 2026</p>
+          <p class="small mb-0"></p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-sm btn-outline-secondary rounded-pill px-3"
+          <button class="btn btn-sm btn-back-to-top rounded-pill px-3"
             onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <i class="bi bi-arrow-up me-1"></i> Back to Top
           </button>

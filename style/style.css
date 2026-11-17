@@ -8,6 +8,12 @@ body {
 }
 
 /* Base font scale applied via body class */
+
+/* Ensure <strong> inside .lead is actually bold — Bootstrap sets .lead to
+   font-weight 300, so "bolder" only computes to 400. */
+.lead strong {
+  font-weight: 700;
+}
 body.scale-small {
   font-size: 0.85rem;
 }
@@ -165,6 +171,23 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
+/* Pressed/flash state for dropdown items — matches the nav-link pressed
+   state (NHS yellow background, black border/text). Uses outline so the
+   border draws at full width without any layout shift. */
+.navbar-nav .nav-dropdown-hover .dropdown-item:active,
+.navbar-nav .nav-dropdown-hover .dropdown-item.nav-link-flash,
+.navbar-nav .nav-dropdown-hover .dropdown-item.nav-link-flash:hover,
+.navbar-nav .nav-dropdown-hover .dropdown-item:active:hover {
+  background-color: #ffec3a !important;
+  border-radius: 0 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  outline: 2px solid #000000 !important;
+  outline-offset: -2px;
+  box-shadow: none;
+  transition: none;
+}
+
 .navbar-nav .nav-link.active {
   text-decoration: underline;
   font-weight: bold;
@@ -218,6 +241,124 @@ a.card.tile-card.bg-warning.bg-warning-dark span {
   font-size: 0.7rem;
   margin-left: 10px;
   opacity: 0.5;
+}
+
+/* ============================================================
+   6b. TOP-LEVEL NAV DROPDOWN (OPENS ON HOVER)
+   Used by the Volunteers nav item to list volunteer sub-pages.
+   Styled to follow NHS UK Frontend guidelines: white panel, black
+   text, sharp corners, #f0f4f5 hover, #ffec3a yellow focus ring.
+============================================================ */
+
+/* Replace the Bootstrap triangle caret with an NHS-style chevron. */
+.navbar-nav .nav-dropdown-hover .dropdown-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  border: none;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.15s ease;
+}
+
+/* Rotate the chevron when the menu is open. */
+.navbar-nav .nav-dropdown-hover.show > .dropdown-toggle::after,
+.navbar-nav .nav-dropdown-hover:hover > .dropdown-toggle::after,
+.navbar-nav .nav-dropdown-hover:focus-within > .dropdown-toggle::after {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+/* Open the dropdown menu on hover (desktop) and on focus/keyboard
+   navigation for accessibility. */
+.navbar-nav .nav-dropdown-hover:hover > .dropdown-menu,
+.navbar-nav .nav-dropdown-hover:focus-within > .dropdown-menu {
+  display: block;
+}
+
+/* The dropdown panel — NHS white, sharp corners, black text. */
+.navbar-nav .nav-dropdown-hover > .dropdown-menu {
+  background-color: #ffffff;
+  color: #212529;
+  border: none;
+  border-radius: 0;
+  border-top: 4px solid #005eb8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  margin-top: 0;
+  min-width: 15rem;
+}
+
+/* Dropdown items — full-width, left-aligned, with a thin NHS grey
+   divider between items (except the last). A 4px transparent border
+   reserves space so the pressed/flash border renders at full width
+   without layout shift. */
+.navbar-nav .nav-dropdown-hover .dropdown-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: break-word;
+  padding: 0.75rem 1.25rem;
+  color: #212529;
+  background-color: #ffffff;
+  border: 4px solid transparent;
+  border-bottom: 1px solid #f0f4f5;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.navbar-nav .nav-dropdown-hover .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover: NHS light grey panel, NHS blue text. */
+.navbar-nav .nav-dropdown-hover .dropdown-item:hover,
+.navbar-nav .nav-dropdown-hover .dropdown-item:focus {
+  background-color: #f0f4f5;
+  color: #005eb8;
+  text-decoration: none;
+}
+
+/* Focus: NHS yellow focus ring. */
+.navbar-nav .nav-dropdown-hover .dropdown-item:focus {
+  outline: 3px solid #ffec3a;
+  outline-offset: -3px;
+}
+
+/* Active sub-page: bold, NHS blue text with a black bottom bar. */
+.navbar-nav .nav-dropdown-hover .dropdown-item.active {
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #005eb8;
+  border-bottom: 1px solid #f0f4f5;
+  padding-bottom: 0.75rem;
+}
+
+.navbar-nav .nav-dropdown-hover .dropdown-item.active:hover {
+  background-color: #003087;
+  color: #ffffff;
+}
+
+/* ============================================================
+   6c. VOLUNTEER MODULE NUMBER BADGES
+   Circular number badges used on the volunteer module tiles.
+============================================================ */
+.volunteer-module-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -909,6 +1050,28 @@ footer {
   width: 100%;
 }
 
+.site-footer {
+  background-color: #d8dddf;
+  border-top: 3px solid #005EB8;
+  color: #26467f;
+}
+
+.site-footer h6,
+.site-footer p,
+.site-footer .btn-back-to-top {
+  color: #26467f;
+}
+
+.site-footer .btn-back-to-top {
+  border: 1px solid #26467f;
+}
+
+.site-footer .btn-back-to-top:hover,
+.site-footer .btn-back-to-top:focus-visible {
+  background-color: #26467f;
+  color: #ffffff;
+}
+
 .footer_image {
   width: 100%;
   height: auto;
@@ -1104,10 +1267,53 @@ footer {
   max-width: 500px;
 }
 
+.compact-caption {
+  padding: 1rem 1.25rem;
+  max-width: 450px;
+}
+
+.learning-matters-caption {
+  left: auto;
+  right: 5%;
+}
+
+.learning-matters-caption .caption-box {
+  padding: 1rem 1.25rem;
+  max-width: 360px;
+}
+
 #hubCarousel .carousel-control-prev,
 #hubCarousel .carousel-control-next {
   z-index: 12;
   width: 5%;
+}
+
+#hubCarousel .carousel-pause-toggle {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 12;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: #0d6efd;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#hubCarousel .carousel-pause-toggle:hover,
+#hubCarousel .carousel-pause-toggle:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+#hubCarousel .carousel-pause-toggle i {
+  font-size: 1.2rem;
 }
 
 /* ============================================================

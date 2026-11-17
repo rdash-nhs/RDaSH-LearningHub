@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>RDaSH Volunteer Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+
+  <!-- Bootstrap 5 (only once) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <div id="header-mount"></div>
+
+  <div id="home" class="page active">
+    <div class="container py-4">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb bg-white p-3 rounded-pill shadow-sm">
+          <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">
+            <i class="bi bi-heart-fill me-1"></i> Volunteer Learning
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Welcome heading -->
+      <div class="mb-5">
+        <h1 class="display-5 fw-bold text-dark">Volunteer <span class="text-primary">Learning Zone</span></h1>
+      </div>
+
+      <p class="lead text-muted mt-2">
+          There are <strong>9</strong> modules to complete at your own pace — you can log off and return at any time and
+          your progress will be saved. Click a tile below to view details and access the module on ESR.
+          If you need help, use the FAQs or Support links below.
+        </p>
+
+      <!-- Module tiles grid -->
+      <div class="row g-3 mb-4">
+
+        <!-- Module 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule1"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #0d6efd;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #0d6efd;">1</span>
+              <span class="fw-semibold">Your role and responsibilities</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule2"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #198754;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #198754;">2</span>
+              <span class="fw-semibold">Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule3"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #dc3545;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #dc3545;">3</span>
+              <span class="fw-semibold">Respect for everyone</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule4"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #0b7285;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #0b7285;">4</span>
+              <span class="fw-semibold">Safeguarding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule5"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #a66100;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #a66100;">5</span>
+              <span class="fw-semibold">Mental Health, Dementia, Learning Disability</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule6"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #6c757d;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #6c757d;">6</span>
+              <span class="fw-semibold">Health and Safety</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 7 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule7"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #d9480f;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #d9480f;">7</span>
+              <span class="fw-semibold">Fluids and nutrition</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 8 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule8"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #553c9a;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #553c9a;">8</span>
+              <span class="fw-semibold">Basic Life Support (BLS)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 9 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 text-white shadow-sm rounded-4 h-100 tile-hover"
+            data-bs-toggle="modal" data-bs-target="#modalModule9"
+            style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; min-height: 80px; background-color: #087f5b;">
+            <div class="card-body p-3 d-flex align-items-center">
+              <span class="volunteer-module-number bg-white" style="color: #087f5b;">9</span>
+              <span class="fw-semibold">Moving and assisting</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Helpful info -->
+      <div class="text-center mt-4 mb-3">
+        <p class="text-muted small mb-0">
+          <i class="bi bi-info-circle me-1 text-primary"></i>
+          Click any tile to view details and access the module on <strong>ESR</strong>.
+          For help, see <a href="volunteer-support.html">Support</a> or <a href="volunteer-faqs.html">FAQs</a>.
+        </p>
+      </div>
+
+            <!-- Modal Module 1 -->
+            <div class="modal fade" id="modalModule1" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold text-primary">Volunteer Learning: Standard 1 – Your role and
+                      responsibilities</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>The roles and responsibilities of being a Volunteer</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Describe your volunteer rights and responsibilities</li>
+                      <li>Explain why it is important to volunteer in ways that are agreed with your volunteer
+                        supervisor and how and when to raise any concerns you may have</li>
+                      <li>Explain why it is important to be honest and identify where errors may have occurred and to
+                        tell the appropriate person</li>
+                      <li>Describe your responsibilities to the people you support</li>
+                      <li>Describe why it is important to volunteer within a team and in partnership with others</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=cxcJSd6dAt4-U2CDf34-MJDTK..XOPTr-BmKq1CspGhYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn btn-primary rounded-pill px-4">Access Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 2 -->
+            <div class="modal fade" id="modalModule2" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold text-success">Volunteer Learning: Standard 2 – Communication</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Communications for Volunteers</li>
+                      <li>Data Security Awareness for Volunteers</li>
+                      <li>Conflict Resolution for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Identify good communication skills</li>
+                      <li>List some of the common, but easily avoidable, communication errors</li>
+                      <li>Identify how to improve your team playing skills through more effective communications with
+                        others</li>
+                      <li>Describe the importance of data security</li>
+                      <li>Explain how you must comply with the law</li>
+                      <li>Define potential threats to the security of information and how you can avoid or minimise them
+                      </li>
+                      <li>Identify breaches and incidents and how to avoid them</li>
+                      <li>Outline the principles of good record keeping</li>
+                      <li>List the most common causes of conflict</li>
+                      <li>Describe the different types of assault, why they occur and the most appropriate way of
+                        dealing with it</li>
+                      <li>Explain how different types of communication can affect a conflict situation</li>
+                      <li>Explain the importance of keeping a safe distance in conflict situations</li>
+                      <li>Explain the need to provide support to those directly affected by a violent incident</li>
+                      <li>Identify sources of support within your organisation</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=sJ7mVTalLUojvvA0uECIcLBrvD0G680ZZxjjpibHljVYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn btn-success rounded-pill px-4">Access Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 3 -->
+            <div class="modal fade" id="modalModule3" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold text-danger">Volunteer Learning: Standard 3 – Respect for everyone
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Equality, Diversity and Human Rights for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Explain what we mean by equality, diversity, human rights and person-centred support and why
+                        they are important</li>
+                      <li>Explain why we need to know about people’s different backgrounds and why it is important not
+                        to make assumptions about individuals</li>
+                      <li>Describe what you can do to challenge prejudice and discrimination</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=iiZ3tGwTEbAMlzUcSvPwkbz5luhGbXRYtzsF4GRYniFYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn btn-danger rounded-pill px-4">Access Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 4 -->
+            <div class="modal fade" id="modalModule4" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold" style="color: #0b7285;">Volunteer Learning: Standard 4 –
+                      Safeguarding</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Safeguarding Adults for Volunteer</li>
+                      <li>Safeguarding Children for Volunteers</li>
+                      <li>Child Sexual Exploitation for Volunteers</li>
+                      <li>Preventing Radicalisation (Basic Awareness) for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Explain what the term 'adult with care and support needs' means</li>
+                      <li>Describe the process where someone is first alerted to a concern or incident that suggests an
+                        adult:
+                        <ul>
+                          <li>Is experiencing or is at risk of abuse or neglect, and</li>
+                          <li>As a result of their care and support needs, is unable to protect themselves against abuse
+                            or neglect, or the risk of it</li>
+                        </ul>
+                      </li>
+                      <li>Define the term 'adult safeguarding' and underlying statutory principles that underpin adult
+                        safeguarding work</li>
+                      <li>Define abuse and neglect, patterns and types and list possible indicators</li>
+                      <li>Identify why some adults are more at risk from abusive behaviour</li>
+                      <li>Explain the role you must play in recognising and reporting and who you need to speak to if
+                        you have a safeguarding concern</li>
+                      <li>Describe the different forms of child abuse (physical, emotional, sexual abuse and neglect)
+                      </li>
+                      <li>Describe how common child abuse is and the impact it can have on a child or young person</li>
+                      <li>Indicate what you should do if you do have concerns about child abuse</li>
+                      <li>Describe the risks associated with the internet and online social networking</li>
+                      <li>Describe what the term 'looked-after child' means</li>
+                      <li>Recognise possible signs of child abuse that you might come across in your volunteering role
+                      </li>
+                      <li>Explain what child sexual exploitation (CSE) is</li>
+                      <li>Describe what you should do if you suspect that an individual is at risk or has been/is being
+                        abused</li>
+                      <li>List the objectives of the Prevent strategy</li>
+                      <li>Identify how volunteers can support Prevent</li>
+                      <li>Identify factors that can make individuals more likely to be radicalised or be a risk to
+                        others</li>
+                      <li>State what action to take if you have concerns about an individual or individuals</li>
+                      <li>Explain what makes a person vulnerable</li>
+                      <li>List how individuals may be influenced directly or indirectly</li>
+                      <li>Explain the importance of sharing information and the consequences of failing to do so</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=uGasxpkPuMF7RosRR5XHN8wRlYwTZmCKCsifmjM4YVRYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn rounded-pill px-4 text-white" style="background-color: #0b7285;">Access
+                      Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 5 -->
+            <div class="modal fade" id="modalModule5" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold" style="color: #a66100;">Volunteer Learning: Standard 5 – Mental
+                      Health, Dementia, Learning Disability</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Mental Health Awareness for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Explain how common mental illness is in the general population</li>
+                      <li>Describe the breadth (or range) of mental health diagnoses and presentations</li>
+                      <li>Explain why mental health is as important as physical health</li>
+                      <li>Explain what dementia is and how it affects people</li>
+                      <li>Describe different types of learning disability</li>
+                      <li>Identify sources of support for an individual with a mental health diagnosis or learning
+                        disability</li>
+                      <li>Explain when volunteers should report concerns if they think an individual's needs are not
+                        being met</li>
+                      <li>Describe principles which volunteers can incorporate to improve interactions with individuals
+                        with mental health needs</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=FvQFdPSYv6g4fX6ffVBE.ln7mQKTMHq5EW7Hpkq5fLhYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn rounded-pill px-4 text-white" style="background-color: #a66100;">Access
+                      Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 6 -->
+            <div class="modal fade" id="modalModule6" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold text-secondary">Volunteer Learning: Standard 6 – Health and Safety
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Health and Safety for Volunteers</li>
+                      <li>Fire Safety for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Identify ways that are consistent with legislation, policies and procedures for maintaining
+                        our own and others’ health and safety</li>
+                      <li>Define the meaning of hazard, risk and risk assessment</li>
+                      <li>Recognise common hazards</li>
+                      <li>Define the characteristics of fire, smoke and toxic fumes</li>
+                      <li>Identify the main fire hazards in your volunteering environment</li>
+                      <li>Describe the actions required when discovering a fire in your volunteering environment,
+                        including how to raise alarm, what action to take when an alarm is raised, evacuation procedures
+                        and associated escape routes</li>
+                      <li>Describe basic fire safety and fire safety protocols</li>
+                      <li>Explain how to practise and promote fire prevention</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=Y0PJpb1dq7WuPPr2UgbGW7nT2dJ0uUZ7JDYGLxHlL7hYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn btn-secondary rounded-pill px-4">Access Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 7 -->
+            <div class="modal fade" id="modalModule7" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold" style="color: #d9480f;">Volunteer Learning: Standard 7 – Fluids and
+                      nutrition</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Fluids and Nutrition for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Describe the importance of food safety, including hygiene, in the preparation and handling of
+                        food</li>
+                      <li>Explain the importance of good nutrition and hydration in maintaining health and well-being
+                      </li>
+                      <li>List of symptoms of poor nutrition and hydration</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=GAAx6UYFfvnBKm9bhW1B.VSTYRJ8b.ZJdGNdFvYQVLlYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn rounded-pill px-4 text-white" style="background-color: #d9480f;">Access
+                      Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 8 -->
+            <div class="modal fade" id="modalModule8" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold" style="color: #553c9a;">Volunteer Learning: Standard 8 – Basic Life
+                      Support (BLS)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Resuscitation (Basic Life Support) for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Recognise when someone’s heart has stopped (cardiac arrest)</li>
+                      <li>Explain the best way of getting immediate help</li>
+                      <li>Describe how to do chest compressions (cardiopulmonary resuscitation (CPR))</li>
+                      <li>Explain what to do if an adult is choking</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=Wk7q.VmnzWWj1c857TTwqG1Pzi.XxlMH12efqLxUmL1YJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn rounded-pill px-4 text-white" style="background-color: #553c9a;">Access
+                      Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Module 9 -->
+            <div class="modal fade" id="modalModule9" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-4 border-0 shadow">
+                  <div class="modal-header border-0 px-4 pt-4">
+                    <h5 class="modal-title fw-bold" style="color: #087f5b;">Volunteer Learning: Standard 9 – Moving and
+                      assisting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body px-4">
+                    <p class="mb-2"><strong>Key content:</strong></p>
+                    <ul class="text-muted mb-4">
+                      <li>Moving and Assisting for Volunteers</li>
+                    </ul>
+                    <p class="mb-2"><strong>By the end of this session you will be able to:</strong></p>
+                    <ul class="text-muted mb-3">
+                      <li>Identify an organisation’s responsibilities for promoting a safe environment including best
+                        moving and assisting practices</li>
+                      <li>Explain your responsibilities for ensuring best moving and assisting practices</li>
+                      <li>Identify risk factors that may cause injury</li>
+                      <li>Demonstrate the correct posture for safe moving and assisting practices</li>
+                      <li>Describe the importance of good back care</li>
+                      <li>Explain the importance of good communication and a team approach</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer border-0 px-4 pb-4">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <a href="https://my.esr.nhs.uk:443/OA_HTML/RF.jsp?function_id=18931&resp_id=-1&resp_appl_id=-1&security_group_id=0&lang_code=US&params=LRb2Yn536jhPqqdTdZHiD8uO2HEkesAc2h1xC8BoNsxYJ0JzYYTwfYn5cQSFaAVWck7VP.Fp0WWX1W2odyMoVN92Ku1Y3wVqwWyfQGtLMwY"
+                      target="_blank" class="btn rounded-pill px-4 text-white" style="background-color: #087f5b;">Access
+                      Module</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+    </div>
+  </div>
+
+
+  <div id="footer-mount"></div>
+
+  <!-- JS libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core modules (shared across all pages) -->
+  <script src="script/core/config.js"></script>
+  <script src="script/core/navigation.js"></script>
+  <script src="script/core/header.js"></script>
+  <script src="script/pages/volunteers.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => initVolunteersPage("volunteers"));
+  </script>
+</body>
+
+</html>
